@@ -1,0 +1,41 @@
+<form bindsubmit="formSubmit">
+  <view class="section section_gap">
+    <view class="section__title">CPU选项</view>
+    <radio-group id="cpu" name="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{cpu_items}}">
+        <radio value="{{item.value}}"/>{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+  <view class="section section_gap">
+    <view class="section__title">GPU选项</view>
+    <radio-group id="gpu" name="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{gpu_items}}">
+        <radio value="{{item.value}}"/>{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+  <view class="section section_gap">
+    <view class="section__title">内存选项</view>
+    <radio-group id="ram" name="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{ram_items}}">
+        <radio value="{{item.value}}"/>{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+   <view class="section section_gap">
+    <view class="section__title">硬盘选项</view>
+    <radio-group id="rom" name="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{rom_items}}">
+        <radio value="{{item.value}}"/>{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+  <view class="section">
+    <view class="section__title">预算</view>
+    <input type="number" name="budget" placeholder="请输入你的预算" bindconfirm='inputComfirm' />
+  </view>
+  <view class="btn-area">
+    <button formType="submit">马上计算你的配置！</button>
+  </view>
+</form>
