@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>
-        CONTROL PANEL
+        智能硬件推荐
     </title>
     <link rel="stylesheet" href='/stylesheets/bootstrap.min.css'>
     <link rel="stylesheet" type="text/css" href='stylesheets/normalize.css' />
@@ -12,13 +12,15 @@
     <script src="/javascripts/bootstrap.min.js"></script>
     <script src="/javascripts/socket.io.js"></script>
     <script src="/javascripts/cookie.js"></script>
+    <link rel="stylesheet" href="/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" href="/stylesheets/prism.css">
 </head>
 <body>
 <div class="head">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">PANEL</a>
+                <a class="navbar-brand" href="#">硬件计算</a>
                 <!--<a id="username" class="navbar-brand" href="#">us</a>-->
             </div>
             <ul class="nav navbar-nav navbar-right">
@@ -56,9 +58,9 @@
                             <tr>
                                 <h5>CPU选项</h5>
                                 <input type="radio" name="optionsRadiosinline1" id="optionsRadios1" value="option1" onclick="cpu_level(1)" checked>仅上网
-                                <input type="radio" name="optionsRadiosinline1" id="optionsRadios2" value="option2"  onclick="cpu_level(2)" checked>小型游戏
-                                <input type="radio" name="optionsRadiosinline1" id="optionsRadios3" value="option3" onclick="cpu_level(3)"checked>大型游戏
-                                <input type="radio" name="optionsRadiosinline1" id="optionsRadios4" value="option4" onclick="cpu_level(4)"checked>渲染工作
+                                <input type="radio" name="optionsRadiosinline1" id="optionsRadios2" value="option2"  onclick="cpu_level(2)">小型游戏
+                                <input type="radio" name="optionsRadiosinline1" id="optionsRadios3" value="option3" onclick="cpu_level(3)">大型游戏
+                                <input type="radio" name="optionsRadiosinline1" id="optionsRadios4" value="option4" onclick="cpu_level(4)">渲染工作
                                 <div id="CPU_stor"></div>
                             </tr>
                         </table>
@@ -68,9 +70,9 @@
                                 <tr>
                                     <h5>GPU选项</h5>
                                     <input type="radio" name="optionsRadiosinline2" id="optionsRadios1" value="option1" onclick="gpu_level(1)" checked>无要求
-                                    <input type="radio" name="optionsRadiosinline2" id="optionsRadios2" value="option2"  onclick="gpu_level(2)" checked>小型游戏
-                                    <input type="radio" name="optionsRadiosinline2" id="optionsRadios3" value="option3" onclick="gpu_level(3)"checked>中型游戏
-                                    <input type="radio" name="optionsRadiosinline2" id="optionsRadios4" value="option4" onclick="gpu_level(4)"checked>大型游戏
+                                    <input type="radio" name="optionsRadiosinline2" id="optionsRadios2" value="option2"  onclick="gpu_level(2)">小型游戏
+                                    <input type="radio" name="optionsRadiosinline2" id="optionsRadios3" value="option3" onclick="gpu_level(3)">中型游戏
+                                    <input type="radio" name="optionsRadiosinline2" id="optionsRadios4" value="option4" onclick="gpu_level(4)">大型游戏
                                 </tr>
                             </table>
                         </li>
@@ -78,9 +80,9 @@
                             <table cellpadding="4">
                                 <tr>
                                     <h5>内存选项</h5>
-                                    <input type="radio" name="optionsRadiosinline3" id="optionsRadios1" value="option1" onclick="ram_level(1)" checked>4g
-                                    <input type="radio" name="optionsRadiosinline3" id="optionsRadios2" value="option2"  onclick="ram_level(2)" checked>8g
-                                    <input type="radio" name="optionsRadiosinline3" id="optionsRadios3" value="option3" onclick="ram_level(3)"checked>16g
+                                    <input type="radio" name="optionsRadiosinline3" id="optionsRadios1" value="option1" onclick="ram_level(1)"checked>4g
+                                    <input type="radio" name="optionsRadiosinline3" id="optionsRadios2" value="option2"  onclick="ram_level(2)" >8g
+                                    <input type="radio" name="optionsRadiosinline3" id="optionsRadios3" value="option3" onclick="ram_level(3)">16g
                                 </tr>
                             </table>
                         </li>
@@ -89,10 +91,10 @@
                                 <tr>
                                     <h5>硬盘选项</h5>
                                     <input type="radio" name="optionsRadiosinline4" id="optionsRadios1" value="option1" onclick="rom_level(1)" checked>SSD 128G
-                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios2" value="option2"  onclick="rom_level(2)" checked>SSD 128G+HDD iT
-                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option3" onclick="rom_level(3)"checked>HDD 1T
-                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option4" onclick="rom_level(4)"checked>SSD 256G
-                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option5" onclick="rom_level(5)"checked>SDD 512G
+                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios2" value="option2"  onclick="rom_level(2)" >SSD 128G+HDD iT
+                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option3" onclick="rom_level(3)">HDD 1T
+                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option4" onclick="rom_level(4)">SSD 256G
+                                    <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option5" onclick="rom_level(5)">SDD 512G
                                 </tr>
                             </table>
                         </li>
@@ -107,10 +109,13 @@
                         <li class="news-item">
                             <table cellpadding="4">
                                 <tr>
-                                        <button class="btn btn-primary" onclick="submit()">计算配置</button>
+                                    <button class="btn btn-primary ladda-button" data-style="zoom-in" onclick="submit()"><span class="ladda-label">计算配置</span></button>
                                 </tr>
                             </table>
                         </li>
+                        <div class="result">
+
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -119,13 +124,20 @@
     </div>
     </div>          
 </body>
+<script src="/dist/spin.min.js"></script>
+<script src="/dist/ladda.min.js"></script>
 <script>
     $(function () {
+        session_check();
         document.cookie="cpu_level="+-1
         document.cookie="gpu_level="+-1;
         document.cookie="ram_level="+-1;
         document.cookie="rom_level="+-1;;
         console.log(cookie.get("uname"));
+        cpu_level(1);
+        gpu_level(1);
+        ram_level(1);
+        rom_level(1);
         $('#username').text(cookie.get("uname"));
         $.get("/getNews?firstget=1",function(data){
             var yitouNum = data;
@@ -152,6 +164,41 @@ function cpu_level(data) {
         console.log("rom->"+data);
         document.cookie="rom_level="+data;
     }
+    var t
+    function stopCount()
+    {
+        clearTimeout(t)
+    }
+    function timedCount()
+    {
+        console.log("timecount");
+        $.get("/calresult",function (data) {
+            console.log(data);
+            //data=JSON.parse(data);
+            if(data.wait==1){
+                console.log("等待结果");
+                return;
+            }
+            else if(data.lowest==0){
+                $('.result').empty();
+
+                stopCount();
+                if(data.cpu1!=null){
+                    $('.result').append("<li class='news-item'><table cellpadding='4'><tr><h3>方案一：新硬件</h3> <h3>CPU:"+data.cpu1+"</h3><h3>GPU:"+data.gcard1+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3></tr> </table> </li>");
+
+                }
+                if(data.cpu2!=null){
+                    $('.result').append("<li class='news-item'><table cellpadding='4'><tr><h3>方案二：旧硬件</h3> <h3>CPU:"+data.cpu2+"</h3><h3>GPU:"+data.gcard2+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3></tr> </table> </li>");
+                }
+            }
+            else {
+                stopCount();
+                $('.result').empty();
+                $('.result').append("<li class='news-item'><table cellpadding='4'><tr> <h3>最低预算="+data.lowest+"</h3> </tr> </table> </li>");
+            }
+        })
+        t=setTimeout("timedCount()",2000)
+    }
     function submit() {
         var select_json_flag=1;
         var select_json={};
@@ -167,21 +214,33 @@ function cpu_level(data) {
         if(cookie.get("rom_level")==-1){select_json_flag=-1;alert("请选择硬盘!")}
         if(cookie.get("ram_level")==-1){select_json_flag=-1;alert("请选择内存!")}
         console.log(JSON.stringify(select_json));
-        if(select_json_flag==1)$.post("/cal",select_json,function (data) {
-            console.log(data);
-            data=JSON.parse(data);
-            if(data.lowest==0){
-                if(data.cpu1!=null){
-                    $('.demo2').append("<li class='news-item'><table cellpadding='4'><tr> <h3>CPU:"+data.cpu1+"</h3><h3>GPU:"+data.gcard1+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3></tr> </table> </li>");
+        if(select_json_flag==1){
+            $.post("/cal",select_json,function (data) {
+                console.log(data);
+                timedCount();
+                return;
+                //弃用 原tcp链接
+                data=JSON.parse(data.resultjson);
+                if(data.lowest==0){
+                    $('.result').empty();
+                    if(data.error_message==1){
+                        console.log("java服务器异常");
+                        return;
+                    }
+                    if(data.cpu1!=null){
+                        $('.result').append("<li class='news-item'><table cellpadding='4'><tr><h3>方案一：新硬件</h3> <h3>CPU:"+data.cpu1+"</h3><h3>GPU:"+data.gcard1+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3><h3>跑分:"+data.score1+"</h3><h3>价格:"+data.price1+"</h3></tr> </table> </li>");
 
+                    }
+                    if(data.cpu2!=null){
+                        $('.result').append("<li class='news-item'><table cellpadding='4'><tr><h3>方案二：旧硬件</h3> <h3>CPU:"+data.cpu2+"</h3><h3>GPU:"+data.gcard2+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3></tr> </table> </li>");
+                    }
+                }else {
+                    $('.result').empty();
+                    $('.result').append("<li class='news-item'><table cellpadding='4'><tr> <h3>最低预算="+data.lowest+"</h3> </tr> </table> </li>");
                 }
-                if(data.cpu2!=null){
-                    $('.demo2').append("<li class='news-item'><table cellpadding='4'><tr> <h3>CPU:"+data.cpu2+"</h3><h3>GPU:"+data.gcard2+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3></tr> </table> </li>");
-                }
-            }else {
-                $('.demo2').append("<li class='news-item'><table cellpadding='4'><tr> <h3>最低预算="+data.lowest+"</h3> </tr> </table> </li>");
-            }
-        })
+            })
+        }
+
     }
     function validate(data,select_json_flag){
         var reg = new RegExp("^[0-9]*$");
@@ -198,9 +257,35 @@ function cpu_level(data) {
             select_json_flag=1;
         }
     }
-    function logout() {
-        cookie.delete("uname");
-        location.href = 'login.html';
+    function session_check() {
+        uname=cookie.get('uname');
+        if(uname==null)logout();
     }
+    function logout() {
+        $.ajax({
+            url:'/logout',
+            type:'post',
+            success: function(result,status){
+                console.log(result,status);
+                if(result.success==1){
+                    cookie.delete("uname");
+                    location.href = 'login.html';
+                }
+                else {
+                    console.log('ERROR');
+                    cookie.delete("uname");
+                    location.href = 'login.html';
+                }
+            },
+            error: function(result,status){
+                console.log('ERROR');
+                cookie.delete("uname");
+                location.href = 'login.html';
+            }
+        });
+
+    }
+    Ladda.bind( 'div:not(.progress-demo) button', { timeout: 2000 } );
+    // Bind progress buttons and simulate loading progress
 </script>
 </html>

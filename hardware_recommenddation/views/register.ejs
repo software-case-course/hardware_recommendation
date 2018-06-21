@@ -82,13 +82,14 @@
                     success: function(result,status){
                         console.log(result);
                         if(result.success == 1){
+                            alert("注册成功，请登录");
                             location.href = 'login.html';
                         }
                         else if(result.same == 1){
                             alert("用户名重复");
                             $("#username").val('');
-                            $("#password").val('');
-                            $("#password1").val('');
+                            //$("#password").val('');
+                           // $("#password1").val('');
                         }
                         else {
                             alert("系统错误，请重试");

@@ -1,0 +1,158 @@
+<html>
+<head>
+    <title>
+        News PANEL
+    </title>
+    <link rel="stylesheet" href='/stylesheets/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href='stylesheets/normalize.css' />
+    <link rel="stylesheet" type="text/css" href='stylesheets/default.css'>
+    <link href='stylesheets/bootstrap-theme.min.css' rel="stylesheet" type="text/css" />
+    <link href='stylesheets/site.css' rel="stylesheet" type="text/css" />
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/socket.io.js"></script>
+    <script src="/javascripts/cookie.js"></script>
+</head>
+<body>
+<div class="head">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">News PANEL</a>
+                <!--<a id="username" class="navbar-brand" href="#">us</a>-->
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class="nickname"><span class="glyphicon glyphicon-user" ></span><font id='username'></font> </a></li>
+                <li onclick="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--左侧个人信息-->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span><b>用户信息</b></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="demo1">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+<!-中间新闻发布页面->
+<div class="col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span><b>配置</b></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="demo2">
+                        <form class="bs-example bs-example-form" role="form">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">标题</span>
+                                <input type="text" class="form-control" >
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">图片url</span>
+                                <input type="text" class="form-control" >
+                            </div>
+                            <br>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="name">概述</label>
+                                    <textarea class="form-control" rows="6"></textarea>
+                                </div>
+                            </form>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>          
+</body>
+<script>
+    $(function () {
+        document.cookie="cpu_level="+-1
+        document.cookie="gpu_level="+-1;
+        document.cookie="ram_level="+-1;
+        document.cookie="rom_level="+-1;;
+        console.log(cookie.get("uname"));
+        $('#username').text(cookie.get("uname"));
+        $('.demo1').append("<li class='user-item'><table cellpadding='4'><tr> <h3>"+cookie.get("uname")+"</h3> </tr> </table> </li>");
+    });
+    function cpu_level(data) {
+        console.log("CPU->"+data);
+        document.cookie="cpu_level="+data;
+    }
+    function gpu_level(data) {
+        console.log("GPU->"+data);
+        document.cookie="gpu_level="+data;
+    }
+    function ram_level(data) {
+        console.log("ram->"+data);
+        document.cookie="ram_level="+data;
+    }
+    function rom_level(data) {
+        console.log("rom->"+data);
+        document.cookie="rom_level="+data;
+    }
+    function submit() {
+        var select_json_flag=1;
+        var select_json={};
+        console.log($("#budget").val());
+        validate($("#budget").val(),select_json_flag);
+        select_json.budget=$("#budget").val();
+        select_json.cpu_level=cookie.get("cpu_level");
+        select_json.gpu_level=cookie.get("gpu_level");
+        select_json.rom_level=cookie.get("rom_level");
+        select_json.ram_level=cookie.get("ram_level");
+        if(cookie.get("cpu_level")==-1){select_json_flag=-1; alert("请选择cpu!")};
+        if(cookie.get("gpu_level")==-1){select_json_flag=-1;alert("请选择gpu!")}
+        if(cookie.get("rom_level")==-1){select_json_flag=-1;alert("请选择硬盘!")}
+        if(cookie.get("ram_level")==-1){select_json_flag=-1;alert("请选择内存!")}
+        console.log(JSON.stringify(select_json));
+        if(select_json_flag==1)$.post("/cal",select_json,function (data) {
+            console.log(data);
+            data=JSON.parse(data);
+            if(data.lowest==0){
+                if(data.cpu1!=null){
+                    $('.demo2').append("<li class='news-item'><table cellpadding='4'><tr> <h3>CPU:"+data.cpu1+"</h3><h3>GPU:"+data.gcard1+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3></tr> </table> </li>");
+
+                }
+                if(data.cpu2!=null){
+                    $('.demo2').append("<li class='news-item'><table cellpadding='4'><tr> <h3>CPU:"+data.cpu2+"</h3><h3>GPU:"+data.gcard2+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3></tr> </table> </li>");
+                }
+            }else {
+                $('.demo2').append("<li class='news-item'><table cellpadding='4'><tr> <h3>最低预算="+data.lowest+"</h3> </tr> </table> </li>");
+            }
+        })
+    }
+    function validate(data,select_json_flag){
+        var reg = new RegExp("^[0-9]*$");
+        var obj = data;
+        if(!reg.test(obj)){
+            alert("请输入数字!");
+            select_json_flag=-1;
+        }
+        else if(!/^[0-9]*$/.test(obj)){
+            alert("请输入数字!");
+            select_json_flag=-1;
+        }
+        else {
+            select_json_flag=1;
+        }
+    }
+    function logout() {
+        cookie.delete("uname");
+        location.href = 'login.html';
+    }
+</script>
+</html>

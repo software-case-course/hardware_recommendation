@@ -7,7 +7,7 @@ var Cmysql=require('../connectToMysql');
 var app = express();
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    return res.render('control', { title: 'control' });
+    return res.render('index', { title: 'Express' });
 });
 router.get('/login.html',function (req,res,next) {
 
@@ -63,6 +63,21 @@ router.post('/login',function (req,res,next) {
     //     res.json({success:0});
     // }
 });
+router.post('/logout',function (req,res,next) {
+    console.log('req:', req.body);
+    console.log('session',req.session.id);
+    Cmysql.init();
+    var session=req.session.id;
+    Cmysql.connection.query('delete from sessionidcheck where sessionid =?',[session],function (err, rows, fields) {
+        if (err) {
+            console.log(err);
+            return res.json({success:0});
+        }
+        else {
+            return res.json({success:1});
+        }
+    })
+})
 router.post('/register',function (req,res,next) {
     console.log('req:', req.body);
     //相同用户名检测
@@ -131,6 +146,7 @@ router.post('/cal',function (req,res,next) {
     })
 })
     router.get('/calresult',function (req,res,next) {
+        console.log(req.session.id);
         Cmysql.init();
         Cmysql.connection.query('select resultjson from result where session =? ',[req.session.id],function (err, rows, fields) {
             console.log(rows.lenth);

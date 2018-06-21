@@ -8,17 +8,9 @@ var session = require('express-session');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var cookieParser = require('cookie-parser');
-var keeprunning=require('./running');
-
-
-// var TCP=require('./connectWithTCP');
+var redis=require('redis')
+var Cmysql=require('./connectToMysql');
 var app = express();
-// var data={};
-// data.a=1;
-// data.b=2;
-// data.c='nihao';
-// TCP.datainit(data);
-// TCP.TCP_connect_start('127.0.0.1',8888);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,7 +31,51 @@ app.use(session({
 }));
 app.use('/control.html',function(req,res,next){
     if (req.session.user) {
-        next();
+        Cmysql.init();
+        Cmysql.connection.query('select * from sessionidcheck where uname=?',[req.session.user.username],function (err, rows, fields) {
+            if (err) {
+                console.log(err);
+            }
+            else if(rows[0]==null){
+                Cmysql.connection.query('insert into sessionidcheck(uname,sessionid)values(?,?)',[req.session.user.username,req.session.id],function (err, result) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log('--------------------------INSERT----------------------------');
+                    //console.log('INSERT ID:',result.insertId);
+                    console.log('INSERT ID:',result);
+                    console.log('-----------------------------------------------------------------\n\n');
+                })
+            }
+            else if(rows[0].sessionid!=req.session.id){
+                console.log(rows);
+                Cmysql.connection.query('update sessionidcheck set sessionid=? where uname=?',[req.session.id,req.session.user.username],function (err,result) {
+                    if(err){
+                        console.log('[UPDATE ERROR] - ',err.message);
+                        return;
+                    }
+                    console.log('--------------------------UPDATE----------------------------');
+                    console.log('UPDATE affectedRows',result.affectedRows);
+                    console.log('-----------------------------------------------------------------\n\n');
+                })
+            }
+        })
+        console.log("session:"+req.session.user)
+        Cmysql.connection.query('select * from log where uname=?',[req.session.user.username],function (err, rows, fields) {
+            console.log(rows[0])
+            if (err) {
+                console.log(err);
+            }
+            else if (rows[0]==null){
+                res.redirect('/login.html');
+            }
+            else if(rows[0].usertypes==1){
+                res.redirect('/newspush.html');
+            }
+            else {
+                next();
+            }
+        })
     }
     else {
       res.redirect('/login.html');

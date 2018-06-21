@@ -1,0 +1,127 @@
+<html>
+<head>
+    <title>
+        News PANEL
+    </title>
+    <link rel="stylesheet" href='/stylesheets/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href='stylesheets/normalize.css' />
+    <link rel="stylesheet" type="text/css" href='stylesheets/default.css'>
+    <link href='stylesheets/bootstrap-theme.min.css' rel="stylesheet" type="text/css" />
+    <link href='stylesheets/site.css' rel="stylesheet" type="text/css" />
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/socket.io.js"></script>
+    <script src="/javascripts/cookie.js"></script>
+</head>
+<body>
+<div class="head">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">News PANEL</a>
+                <!--<a id="username" class="navbar-brand" href="#">us</a>-->
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" class="nickname"><span class="glyphicon glyphicon-user" ></span><font id='username'></font> </a></li>
+                <li onclick="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--左侧个人信息-->
+<div class="col-md-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span><b>用户信息</b></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="demo1">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div class="col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span><b>配置</b></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="demo2">
+                        <form class="bs-example bs-example-form" role="form">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">标题</span>
+                                <input type="text" class="form-control" id="title">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">图片url</span>
+                                <input type="text" class="form-control" id="image">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">原文url</span>
+                                <input type="text" class="form-control" id="text">
+                            </div>
+                            <br>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="name">概述</label>
+                                    <textarea class="form-control" rows="6" id="keywords"></textarea>
+                                </div>
+                            </form>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info col-sm-2 col-sm-offset-10" onclick="submit()">提交</button>
+                            </div>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>          
+</body>
+<script>
+    $(function () {
+        console.log(cookie.get("uname"));
+        $('#username').text(cookie.get("uname"));
+        $('.demo1').append("<li class='user-item'><table cellpadding='4'><tr> <h3>"+cookie.get("uname")+"</h3> </tr> </table> </li>");
+    })
+    function submit() {
+        var image = $("#image").val();
+        var title = $("#title").val();
+        var keywords = $("#keywords").val();
+        var text = $("#text").val();
+        var date = new Date();
+        var data = {"image":image,"title":title,"keywords":keywords,"text":text,"time":date};
+        $.ajax({
+            url: '/setNews',
+            type: 'post',
+            data: data,
+            success: function(result,status){
+                console.log(result);
+                if(result.success == 1){
+                    location.href = 'newspush2.html';
+                }
+                else if(result.same == 1){
+                    alert("标题名重复");
+                }
+                else {
+                    alert("系统错误，请重试");
+                }
+            },
+            error: function(data,err){
+            }
+        });
+    }
+    function logout() {
+        cookie.delete("uname");
+        location.href = 'login.html';
+    }
+</script>
+</html>
