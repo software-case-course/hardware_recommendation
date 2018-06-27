@@ -299,7 +299,7 @@
             else if(data.lowest==0){
                 $('.result').empty();
                 stopCount();
-                session_check();
+                gethistory();
                 if(data.cpu1!=null){
                     $('.result').append("<li class='news-item'><table cellpadding='4'><tr><h3>方案一：综合考虑</h3> <h3>CPU:"+data.cpu1+"</h3><h3>GPU:"+data.gcard1+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3><h3>总价格:"+data.price1+"元</h3></tr> </table> </li>");
 
@@ -310,7 +310,7 @@
             }
             else {
                 stopCount();
-                session_check();
+                gethistory();
                 $('.result').empty();
                 $('.result').append("<li class='news-item'><table cellpadding='4'><tr> <h3>最低预算="+data.lowest+"</h3> </tr> </table> </li>");
             }
