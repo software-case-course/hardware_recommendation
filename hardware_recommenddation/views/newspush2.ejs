@@ -147,9 +147,32 @@
             }
         });
     }
+
     function logout() {
-        cookie.delete("uname");
-        location.href = 'login.html';
+        $.ajax({
+            url:'/logout',
+            type:'post',
+            success: function(result,status){
+                console.log(result,status);
+                if(result.success==1){
+                    cookie.delete("uname");
+                    session_check();
+                    location.href = 'login.html';
+                }
+                else {
+                    console.log('ERROR');
+                    cookie.delete("uname");
+                    session_check();
+                    location.href = 'login.html';
+                }
+            },
+            error: function(result,status){
+                console.log('ERROR');
+                cookie.delete("uname");
+                session_check();
+                location.href = 'login.html';
+            }
+        });
     }
     function session_check() {
         uname=cookie.get('uname');
