@@ -1,0 +1,110 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">微硬件</view>
+    <view class="page__desc">微硬件 是一款采用大数据分析的电脑硬件推荐应用</view>
+  </view>
+	<view class="page__bd">
+		<form bindsubmit="formSubmit">  
+			<view class="weui-cells__title">选择你的使用习惯！</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_select">
+					<view class="weui-cell__hd weui-cell__hd_in-select-after">
+						<view class="weui-label">CPU选项：</view>
+					</view>
+					<view class="weui-cell__bd">
+						<picker id="cpu" bindchange="bindPickerChange" value="{{cpu_level}}" range="{{cpu_items}}" range-key="name">
+							<view class="weui-select weui-select_in-select-after">{{cpu_items[cpu_level].name}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+			<view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_select">
+					<view class="weui-cell__hd weui-cell__hd_in-select-after">
+						<view class="weui-label">GPU选项：</view>
+					</view>
+					<view class="weui-cell__bd">
+						<picker id="gpu" bindchange="bindPickerChange" value="{{gpu_level}}" range="{{gpu_items}}" range-key="name">
+							<view class="weui-select weui-select_in-select-after">{{gpu_items[gpu_level].name}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+      <view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_select">
+					<view class="weui-cell__hd weui-cell__hd_in-select-after">
+						<view class="weui-label">硬盘选项：</view>
+					</view>
+					<view class="weui-cell__bd">
+						<picker id="ram" bindchange="bindPickerChange" value="{{ram_level}}" range="{{ram_items}}" range-key="name">
+							<view class="weui-select weui-select_in-select-after">{{ram_items[ram_level].name}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+      <view class="weui-cells weui-cells_after-title">
+				<view class="weui-cell weui-cell_select">
+					<view class="weui-cell__hd weui-cell__hd_in-select-after">
+						<view class="weui-label">内存选项：</view>
+					</view>
+					<view class="weui-cell__bd">
+						<picker id="rom" bindchange="bindPickerChange" value="{{rom_level}}" range="{{rom_items}}" range-key="name">
+							<view class="weui-select weui-select_in-select-after">{{rom_items[rom_level].name}}</view>
+						</picker>
+					</view>
+				</view>
+			</view>
+
+      <view class="weui-cells__title">告诉我们你的预算！</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">预算</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input type="number" name="budget" class="weui-input" bindconfirm='inputComfirm' placeholder="请输入你的预算"/>
+                </view>
+            </view>
+      </view>
+
+			<checkbox-group bindchange="bindAgreeChange">
+				<label class="weui-agree" for="weuiAgree">
+					<view class="weui-agree__text">
+						<checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+						<view class="weui-agree__checkbox-icon">
+							<icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+						</view>
+						阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+					</view>
+				</label>
+			</checkbox-group>
+
+			<view class="weui-btn-area">
+				<button class="weui-btn" formType="submit" type="primary">马上计算你的配置！</button>
+			</view>
+		</form>
+	</view>
+
+  <view class="{{showResult?'show':'hide'}}">
+    <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">你可以考虑一下配置~</view>
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">配置一</view>
+                    <view class="weui-media-box__desc">{{resultText}}</view>
+                </view>
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">配置二</view>
+                    <view class="weui-media-box__desc">{{resultText2}}</view>
+                </view>
+            </view>
+    </view>
+  </view>
+  
+
+  <view class="page__bd page__bd_spacing">
+        <view class="weui-footer weui-footer_fixed-bottom">
+            <view class="weui-footer__text">Copyright © 2008-2018 Scnu.cs</view>
+        </view>
+  </view>
+</view>
