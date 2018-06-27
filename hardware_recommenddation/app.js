@@ -29,7 +29,7 @@ app.use(session({
     secret: 'hubwiz app', //secret的值建议使用随机字符串
     cookie: {maxAge: 60 * 1000 * 30} // 过期时间（毫秒）
 }));
-app.use('/control.html',function(req,res,next){
+app.use('/newspush2.html',function(req,res,next){
     if (req.session.user) {
         Cmysql.init();
         Cmysql.connection.query('select * from sessionidcheck where uname=?',[req.session.user.username],function (err, rows, fields) {
@@ -70,10 +70,10 @@ app.use('/control.html',function(req,res,next){
                 res.redirect('/login.html');
             }
             else if(rows[0].usertypes==1){
-                res.redirect('/newspush.html');
+                next();
             }
             else {
-                next();
+                res.redirect('/index2.html');
             }
         })
     }

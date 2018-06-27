@@ -143,7 +143,7 @@
             var yitouNum = data;
             data.forEach(function (e) {
                 console.log(e);
-                $('.demo1').append("<li class='news-item'><table cellpadding='4'><tr> <td><img src='"+e.image+"' width='60'  /></td><h3>"+e.title+"</h3><td>"+e.keywords +"<a href='"+e.text+"'>Read more...</a></td> </tr> </table> </li>");
+                $('.demo1').append("<li class='news-item'><table cellpadding='4'><tr> <td><img src='"+e.image+"' width='60'  /></td><a>"+e.title+"</a><td>"+e.keywords +"<a href='"+e.text+"'>Read more...</a></td> </tr> </table> </li>");
             })
 
         });

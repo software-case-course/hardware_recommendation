@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>硬件计算 </title>
+
+    <link rel="stylesheet" href='/stylesheets/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href='stylesheets/normalize.css' />
+    <link rel="stylesheet" type="text/css" href='stylesheets/default.css'>
+    <link href='stylesheets/bootstrap-theme.min.css' rel="stylesheet" type="text/css" />
+    <link href='stylesheets/site.css' rel="stylesheet" type="text/css" />
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/socket.io.js"></script>
+    <script src="/javascripts/cookie.js"></script>
+    <link rel="stylesheet" href="/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" href="/stylesheets/prism.css">
+
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="header">
+  <div class="container"> <a class="navbar-brand" href="index2.html"><i class="fa fa-laptop"></i> 硬件计算</a>
+    <div class="menu"> <a class="toggleMenu" href="#"><img src="images/nav_icon.png" alt="" /> </a>
+      <ul class="nav" id="nav">
+        <li class="current"><a href="index2.html">主页</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="services.html">硬件计算</a></li>
+        <li><a href="news.html">新闻</a></li>
+          <li><a class="login" href="login.html">登录</a></li>
+          <li><a  class= "signin" href="register.html">注册</a></li>
+        <div class="clear"></div>
+      </ul>
+      <script type="text/javascript" src="js/responsive-nav.js"></script>
+    </div>
+  </div>
+</div>
+<div class="about">
+  <div class="container">
+    <section class="title-section">
+      <h1 class="title-header">GA算法推荐</h1>
+    </section>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="main">
+      <!--左侧栏-->
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span><b>使用说明</b></div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <ul class="demo1">
+                    <li class='news-item'><table cellpadding='2'>本程序采用GA算法，不同时期的计算结果可能略有不同</table> </li>
+                    <li class='news-item'><table cellpadding='2'>您只需要点选您的需求并录入您的预算，我们会为您推荐预算内符合您需求的配置</table> </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-list-alt"></span><b>历史记录</b></div>
+            <div class="panel-body">
+              <div class="panel-group" id="accordion-alt3">
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a class="title0" data-toggle="collapse" data-parent="#accordion-alt3" href="#collapseOne-alt3"> <i class="fa fa-angle-right"></i>采用优秀的推荐算法</a> </h4>
+                  </div>
+                  <div id="collapseOne-alt3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="history0">采用GA算法，根据最新的硬件数据与权威网站的硬件跑分，为您推荐最合适您的装机配置，省去了寻找配置的困扰</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a class="title1" data-toggle="collapse" data-parent="#accordion-alt3" href="#collapseTwo-alt3"> <i class="fa fa-angle-right"></i> 为您带来全网最新资讯</a> </h4>
+                  </div>
+                  <div id="collapseTwo-alt3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="history1">如果您对硬件新闻感兴趣，这里会给您带来惊喜</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a  class="title2" data-toggle="collapse" data-parent="#accordion-alt3" href="#collapseThree-alt3"> <i class="fa fa-angle-right"></i>优秀的一对一专人装机服务</a> </h4>
+                  </div>
+                  <div id="collapseThree-alt3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="history2">针对特殊需求，我们有知识丰富的专业团队为您提供专人服务，从挑选配置到实际装机，为您提供一条龙服务</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h4 class="panel-title"> <a class="title3" data-toggle="collapse" data-parent="#accordion-alt3" href="#collapseFour-alt3"> <i class="fa fa-angle-right"></i>优秀的一对一专人装机服务</a> </h4>
+                  </div>
+                  <div id="collapseFour-alt3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="history3">针对特殊需求，我们有知识丰富的专业团队为您提供专人服务，从挑选配置到实际装机，为您提供一条龙服务</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div> 
+      <div class="col-md-7">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span><b>配置</b></div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <ul class="demo2">
+                  <li class="news-item">
+                    <table cellpadding="4">
+                      <tr>
+                        <h5>CPU选项</h5>
+                        <input type="radio" name="optionsRadiosinline1" id="optionsRadios1" value="option1" onclick="cpu_level(1)" checked>仅上网
+                        <input type="radio" name="optionsRadiosinline1" id="optionsRadios2" value="option2"  onclick="cpu_level(2)">小型游戏
+                        <input type="radio" name="optionsRadiosinline1" id="optionsRadios3" value="option3" onclick="cpu_level(3)">大型游戏
+                        <input type="radio" name="optionsRadiosinline1" id="optionsRadios4" value="option4" onclick="cpu_level(4)">渲染工作
+                        <div id="CPU_stor"></div>
+                      </tr>
+                    </table>
+                  </li>
+                  <li class="news-item" >
+                    <table cellpadding="4">
+                      <tr>
+                        <h5>GPU选项</h5>
+                        <input type="radio" name="optionsRadiosinline2" id="optionsRadios1" value="option1" onclick="gpu_level(1)" checked>无要求
+                        <input type="radio" name="optionsRadiosinline2" id="optionsRadios2" value="option2"  onclick="gpu_level(2)">小型游戏
+                        <input type="radio" name="optionsRadiosinline2" id="optionsRadios3" value="option3" onclick="gpu_level(3)">中型游戏
+                        <input type="radio" name="optionsRadiosinline2" id="optionsRadios4" value="option4" onclick="gpu_level(4)">大型游戏
+                      </tr>
+                    </table>
+                  </li>
+                  <li class="news-item">
+                    <table cellpadding="4">
+                      <tr>
+                        <h5>内存选项</h5>
+                        <input type="radio" name="optionsRadiosinline3" id="optionsRadios1" value="option1" onclick="ram_level(1)"checked>4g
+                        <input type="radio" name="optionsRadiosinline3" id="optionsRadios2" value="option2"  onclick="ram_level(2)" >8g
+                        <input type="radio" name="optionsRadiosinline3" id="optionsRadios3" value="option3" onclick="ram_level(3)">16g
+                      </tr>
+                    </table>
+                  </li>
+                  <li class="news-item">
+                    <table cellpadding="4">
+                      <tr>
+                        <h5>硬盘选项</h5>
+                        <input type="radio" name="optionsRadiosinline4" id="optionsRadios1" value="option1" onclick="rom_level(1)" checked>SSD 128G
+                        <input type="radio" name="optionsRadiosinline4" id="optionsRadios2" value="option2"  onclick="rom_level(2)" >SSD 128G+HDD iT
+                        <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option3" onclick="rom_level(3)">HDD 1T
+                        <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option4" onclick="rom_level(4)">SSD 256G
+                        <input type="radio" name="optionsRadiosinline4" id="optionsRadios3" value="option5" onclick="rom_level(5)">SDD 512G
+                      </tr>
+                    </table>
+                  </li>
+                  <li class="news-item">
+                    <table cellpadding="4">
+                      <tr>
+                        <h5>预算</h5>
+                        <input type="text" class="form-control" id="budget" name="username" placeholder="请输入预算" required>
+                      </tr>
+                    </table>
+                  </li>
+                  <li class="news-item">
+                    <table cellpadding="4">
+                      <tr>
+                        <button id='submit' class="btn btn-primary ladda-button" data-style="zoom-in" onclick="submit()"><span class="ladda-label">计算配置</span></button>
+                      </tr>
+                    </table>
+                  </li>
+                  <div class="result">
+
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+<div class="footer">
+    <div class="footer_bottom">
+        <div class="follow-us"> <a class="fa fa-facebook social-icon" href="#"></a> <a class="fa fa-twitter social-icon" href="#"></a> <a class="fa fa-linkedin social-icon" href="#"></a> <a class="fa fa-google-plus social-icon" href="#"></a> </div>
+        <div class="copy">
+            <p>Copyright &copy; 2017 硬件推荐 </p>
+        </div>
+    </div>
+</div>
+<script src="/dist/spin.min.js"></script>
+<script src="/dist/ladda.min.js"></script>
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flexslider.js"></script>
+<script>
+    $(function () {
+        session_check();
+        document.cookie="cpu_level="+-1
+        document.cookie="gpu_level="+-1;
+        document.cookie="ram_level="+-1;
+        document.cookie="rom_level="+-1;;
+        console.log(cookie.get("uname"));
+        cpu_level(1);
+        gpu_level(1);
+        ram_level(1);
+        rom_level(1);
+        $('#username').text(cookie.get("uname"));
+        /*$.get("/getNews?firstget=1",function(data){
+            var yitouNum = data;
+            data.forEach(function (e) {
+                console.log(e);
+                $('.demo1').append("<li class='news-item'><table cellpadding='4'><tr> <td><img src='"+e.image+"' width='60'  /></td><h3>"+e.title+"</h3><td>"+e.keywords +"<a href='"+e.text+"'>Read more...</a></td> </tr> </table> </li>");
+            })
+
+        });*/
+    })
+    function cpu_level(data) {
+        console.log("CPU->"+data);
+        document.cookie="cpu_level="+data;
+    }
+    function gpu_level(data) {
+        console.log("GPU->"+data);
+        document.cookie="gpu_level="+data;
+    }
+    function ram_level(data) {
+        console.log("ram->"+data);
+        document.cookie="ram_level="+data;
+    }
+    function rom_level(data) {
+        console.log("rom->"+data);
+        document.cookie="rom_level="+data;
+    }
+    var t
+    function stopCount()
+    {
+        clearTimeout(t);
+        l.stop();
+    }
+    function gethistory() {
+        $.get("/history",function (data) {
+            //$(".panel-group").hide();
+            console.log((data));
+            var i=0;
+            data.forEach(function (e) {
+                $(history).text("");
+                $(title).text("");
+                console.log(e);
+                console.log(i);
+                var title=".title"+i;
+                var history=".history"+i;
+                $(title).text(e.time);
+                var historyobj=JSON.parse(e.resultjson);
+                $(history).text("");
+                if(historyobj.cpu1!=null){
+                    $(history).append("<h3>方案一：综合考虑</h3> <p>CPU:"+historyobj.cpu1+"</p><p>GPU:"+historyobj.gcard1+"</p> <p>内存:"+historyobj.ram+"</p><p>硬盘:"+historyobj.rom+"</p><p>总价格:"+historyobj.price1+"元</p> ");
+
+                }
+                if(historyobj.cpu2!=null){
+                    $(history).append("<h3>方案二：极致性能</h3> <p>CPU:"+historyobj.cpu2+"</p><p>GPU:"+historyobj.gcard2+"</p> <p>内存:"+historyobj.ram+"</p><p>硬盘:"+historyobj.rom+"</p><p>总价格:"+historyobj.price2+"元</p>");
+                }
+               // $(history).text(e.resultjson);
+                i++;
+            })
+            console.log(i);
+            if(i!=4){
+
+            }
+        })
+    }
+    function timedCount()
+    {
+        console.log("timecount");
+        $.get("/calresult",function (data) {
+            console.log(data);
+            //data=JSON.parse(data);
+            if(data.wait==1){
+                console.log("等待结果");
+                return;
+            }
+            else if(data.lowest==0){
+                $('.result').empty();
+                stopCount();
+                session_check();
+                if(data.cpu1!=null){
+                    $('.result').append("<li class='news-item'><table cellpadding='4'><tr><h3>方案一：综合考虑</h3> <h3>CPU:"+data.cpu1+"</h3><h3>GPU:"+data.gcard1+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3><h3>总价格:"+data.price1+"元</h3></tr> </table> </li>");
+
+                }
+                if(data.cpu2!=null){
+                    $('.result').append("<li class='news-item'><table cellpadding='4'><tr><h3>方案二：极致性能</h3> <h3>CPU:"+data.cpu2+"</h3><h3>GPU:"+data.gcard2+"</h3> <h3>内存:"+data.ram+"</h3><h3>硬盘:"+data.rom+"</h3><h3>总价格:"+data.price2+"元</h3></tr> </table> </li>");
+                }
+            }
+            else {
+                stopCount();
+                session_check();
+                $('.result').empty();
+                $('.result').append("<li class='news-item'><table cellpadding='4'><tr> <h3>最低预算="+data.lowest+"</h3> </tr> </table> </li>");
+            }
+        })
+        t=setTimeout("timedCount()",2000)
+    }
+    function submit() {
+        l.start();
+        var select_json_flag=1;
+        var select_json={};
+        console.log($("#budget").val());
+        validate($("#budget").val(),select_json_flag);
+        select_json.budget=$("#budget").val();
+        select_json.cpu_level=cookie.get("cpu_level");
+        select_json.gpu_level=cookie.get("gpu_level");
+        select_json.rom_level=cookie.get("rom_level");
+        select_json.ram_level=cookie.get("ram_level");
+        if(cookie.get("cpu_level")==-1){select_json_flag=-1; alert("请选择cpu!");return;};
+        if(cookie.get("gpu_level")==-1){select_json_flag=-1;alert("请选择gpu!");return;}
+        if(cookie.get("rom_level")==-1){select_json_flag=-1;alert("请选择硬盘!");return;}
+        if(cookie.get("ram_level")==-1){select_json_flag=-1;alert("请选择内存!");return;}
+        console.log(JSON.stringify(select_json));
+        if(select_json_flag==1){
+            $.post("/cal",select_json,function (data) {
+                console.log(data);
+                timedCount();
+                return;
+            })
+        }
+
+    }
+    function validate(data,select_json_flag){
+        var reg = new RegExp("^[0-9]*$");
+        var obj = data;
+        if(!reg.test(obj)){
+            alert("请输入数字!");
+            select_json_flag=-1;
+        }
+        else if(!/^[0-9]*$/.test(obj)){
+            alert("请输入数字!");
+            select_json_flag=-1;
+        }
+        else {
+            select_json_flag=1;
+        }
+    }
+    function session_check() {
+        uname=cookie.get('uname');
+        if(uname==null){
+            $(".login").text("登录");
+            $(".signin").text("注册");
+            $(".login").attr('href','login.html');
+            $(".signin").attr('href','register.html');
+            $(".signin").removeAttr('onclick');
+            $('.demo1').append("<li class='news-item'><table cellpadding='1'><i class='fa fa-warning fa-lg'style='color:red;'></i>为了方便您比较查询到的结果，我们强烈建议您注册登录我们的网站 </table> </li>");
+            $('.demo3').append("<li class='news-item'><table cellpadding='1'><i class='fa fa-warning fa-lg'style='color:red;'></i>您还未登陆，无法使用该功能 </table> </li>");
+        }
+        else{
+            gethistory();
+            $(".login").text(uname);
+            $(".signin").text("登出");
+            $(".login").attr('href','#');
+            $(".signin").attr('href','#');
+            $(".signin").attr('onclick','logout()');
+        }
+    }
+    function logout() {
+        $.ajax({
+            url:'/logout',
+            type:'post',
+            success: function(result,status){
+                console.log(result,status);
+                if(result.success==1){
+                    cookie.delete("uname");
+                    session_check();
+                }
+                else {
+                    console.log('ERROR');
+                    cookie.delete("uname");
+                    session_check();
+                }
+            },
+            error: function(result,status){
+                console.log('ERROR');
+                cookie.delete("uname");
+                session_check();
+            }
+        });
+    }
+    var l = Ladda.create( document.querySelector( '#submit' ) );
+    //Ladda.bind( 'div:not(.progress-demo) button' );
+    // Bind progress buttons and simulate loading progress
+</script>
+</body>
+</html>

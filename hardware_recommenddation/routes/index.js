@@ -30,6 +30,22 @@ router.get('/newspush.html',function (req,res,next) {
 router.get('/newspush2.html',function (req,res,next) {
     return res.render('newspush2',{title:'newspush'});
 });
+/*coming from module*/
+router.get('/about.html',function (req,res,next) {
+    return res.render('about',{title:'blog'});
+});
+router.get('/contact.html',function (req,res,next) {
+    return res.render('contact',{title:'contact'});
+});
+router.get('/news.html',function (req,res,next) {
+    return res.render('news',{title:'news'});
+});
+router.get('/services.html',function (req,res,next) {
+    return res.render('services',{title:'services'});
+});
+router.get('/index2.html',function (req,res,next) {
+    return res.render('index_model',{title:'index_mode'});
+});
 router.post('/login',function (req,res,next) {
     console.log('req:', req.body);
     Cmysql.init();
@@ -45,8 +61,17 @@ router.post('/login',function (req,res,next) {
             console.log(rows);
             var user = {'username': req.body.uname};
             req.session.user = user;
-
-             // res.cookie("user", req.body.uname, {maxAge: 1000*60*60*24*30,httpOnly: true}); //, signed: true
+            Cmysql.init();
+            Cmysql.query('insert into sessionidcheck(uname,sessionid)values(?,?)',[req.session.user.username,req.session.id],function (err, result) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('--------------------------INSERT----------------------------');
+                //console.log('INSERT ID:',result.insertId);
+                console.log('INSERT ID:',result);
+                console.log('-----------------------------------------------------------------\n\n');
+            })
+            // res.cookie("user", req.body.uname, {maxAge: 1000*60*60*24*30,httpOnly: true}); //, signed: true
             return res.json({success:1,usertypes:rows[0].usertypes});
         }
         else {
@@ -66,6 +91,7 @@ router.post('/login',function (req,res,next) {
 router.post('/logout',function (req,res,next) {
     console.log('req:', req.body);
     console.log('session',req.session.id);
+    delete req.session.user;
     Cmysql.init();
     var session=req.session.id;
     Cmysql.connection.query('delete from sessionidcheck where sessionid =?',[session],function (err, rows, fields) {
@@ -114,6 +140,12 @@ router.post('/register',function (req,res,next) {
 router.post('/cal',function (req,res,next) {
     var str=req.body;
     str.sessionid=req.session.id;
+    if(req.session.user!=null){
+        str.uname=req.session.user.username;
+    }
+    else {
+        str.uname="anonymity";
+    }
     var string = JSON.stringify(str)
     usingredis.push_message(string);
     return res.json({success:1});
@@ -123,7 +155,7 @@ router.post('/cal',function (req,res,next) {
     str.sessionid=req.session.id;
     var string = JSON.stringify(str)
     usingredis.push_message(string);
-    console.log('req:',str);
+    console.log('req:',string);
     TCP.datainit(str);
     TCP.TCP_connect_start();
     TCP.status.on('success',function (data) {
@@ -240,7 +272,26 @@ router.get('/getNews',function (req,res,next) {
         });
     }
 })
+router.get('/history',function (req,res,next) {
 
+    var uname= req.session.user.username;
+    console.log(uname+"->gethistory");
+    Cmysql.init();
+    Cmysql.connection.query('select * from history where uname= ? order by time DESC limit 0,4',[uname],function (err,rows,fields) {
+        if (err) {
+            console.log(err);
+            res.json({success:0});
+        }
+        else {
+            console.log(rows);
+            return res.json(rows);
+            Cmysql.connection.end(function () {
+                console.log('connection_end: ');
+            });
+        }
+        console.log("?");
+    });
+});
 router.post('/setNews',function (req,res,next) {
     console.log('req:', req.body);
     Cmysql.init();

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>硬件计算 |新闻资讯</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href='stylesheets/normalize.css' />
+    <link rel="stylesheet" type="text/css" href='stylesheets/default.css'>
+    <link href='stylesheets/site.css' rel="stylesheet" type="text/css" />
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/socket.io.js"></script>
+    <script src="/javascripts/cookie.js"></script>
+    <link rel="stylesheet" href="/dist/ladda-themeless.min.css">
+    <link rel="stylesheet" href="/stylesheets/prism.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='http://fonts.useso.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="header">
+    <div class="container"> <a class="navbar-brand" href="index2.html"><i class="fa fa-laptop"></i> 硬件计算</a>
+        <div class="menu"> <a class="toggleMenu" href="#"><img src="images/nav_icon.png" alt="" /> </a>
+            <ul class="nav" id="nav">
+                <li class="current"><a href="index2.html">主页</a></li>
+                <li><a href="newspush2.html">关于我们</a></li>
+                <li><a href="services.html">硬件计算</a></li>
+                <li><a href="news.html">新闻</a></li>
+                <li><a class="login" href="login.html">登录</a></li>
+                <li><a  class= "signin" href="register.html">注册</a></li>
+                <div class="clear"></div>
+            </ul>
+            <script type="text/javascript" src="js/responsive-nav.js"></script>
+        </div>
+    </div>
+</div>
+<div class="about">
+    <div class="container">
+        <section class="title-section">
+            <h1 class="title-header">硬件资讯</h1>
+        </section>
+    </div>
+</div>
+<div class="contact">
+    <div class="container">
+        <div class="row contact_top">
+            <!--左侧栏-->
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-list-alt"></span><b>新闻导视</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <ul class="demo1">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer_bottom">
+        <div class="follow-us"> <a class="fa fa-facebook social-icon" href="#"></a> <a class="fa fa-twitter social-icon" href="#"></a> <a class="fa fa-linkedin social-icon" href="#"></a> <a class="fa fa-google-plus social-icon" href="#"></a> </div>
+        <div class="copy">
+            <p>Copyright &copy; 2017 硬件推荐 </p>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.flexslider.js"></script>
+</body>
+<script>
+    $(function () {
+        session_check();
+        console.log(cookie.get("uname"));
+        $('#username').text(cookie.get("uname"));
+        $.get("/getNews?firstget=1",function(data){
+            var yitouNum = data;
+            data.forEach(function (e) {
+                console.log(e);
+                $('.demo1').append("<li class='news-item nav'> <legend></legend><table cellpadding='4'><tr> <td><img src='"+e.image+"' width='120'/></td><a style='text-decoration: none;color:black'  target='_blank' href='"+e.text+"'><h4>"+e.title+"</h4><legend></legend></a><td><p>"+e.keywords +"</p> </td></tr> </table> <legend></legend></li>");
+            })
+        });
+    })
+    function session_check() {
+        uname=cookie.get('uname');
+        if(uname==null){
+            $(".login").text("登录");
+            $(".signin").text("注册");
+            $(".login").attr('href','login.html');
+            $(".signin").attr('href','register.html');
+            $(".signin").removeAttr('onclick');
+            $('.demo1').append("<li class='news-item'><table cellpadding='1'><i class='fa fa-warning fa-lg'style='color:red;'></i>为了方便您的使用，我们强烈建议您注册登录我们的网站 </table> </li>");
+            $('.demo3').append("<li class='news-item'><table cellpadding='1'><i class='fa fa-warning fa-lg'style='color:red;'></i>您还未登陆，无法使用该功能 </table> </li>");
+        }
+        else{
+            $(".login").text(uname);
+            $(".signin").text("登出");
+            $(".login").attr('href','#');
+            $(".signin").attr('href','#');
+            $(".signin").attr('onclick','logout()');
+        }
+    }
+    function logout() {
+        $.ajax({
+            url:'/logout',
+            type:'post',
+            success: function(result,status){
+                console.log(result,status);
+                if(result.success==1){
+                    cookie.delete("uname");
+                    session_check();
+                }
+                else {
+                    console.log('ERROR');
+                    cookie.delete("uname");
+                    session_check();
+                }
+            },
+            error: function(result,status){
+                console.log('ERROR');
+                cookie.delete("uname");
+                session_check();
+            }
+        });
+    }
+</script>
+</html>
