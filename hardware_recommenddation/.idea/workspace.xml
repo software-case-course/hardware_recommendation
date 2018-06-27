@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="services.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/services.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="310" column="32" selection-start-line="310" selection-start-column="32" selection-end-line="310" selection-end-column="32" />
+            <state relative-caret-position="400">
+              <caret line="379" column="5" lean-forward="true" selection-start-line="379" selection-start-column="5" selection-end-line="379" selection-end-column="5" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
@@ -93,6 +93,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="login.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/login.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="flexslider.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/flexslider.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -111,7 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>index</find>
       <find>css</find>
       <find>bootstrap</find>
       <find>ses</find>
@@ -141,6 +153,7 @@
       <find>text</find>
       <find>title0</find>
       <find>session_check</find>
+      <find>myModal</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -163,12 +176,12 @@
         <option value="$PROJECT_DIR$/views/register.ejs" />
         <option value="$PROJECT_DIR$/views/news.ejs" />
         <option value="$PROJECT_DIR$/views/newspush2.ejs" />
-        <option value="$PROJECT_DIR$/views/login.ejs" />
         <option value="$PROJECT_DIR$/views/about.ejs" />
         <option value="$PROJECT_DIR$/views/index_model.ejs" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/services.ejs" />
+        <option value="$PROJECT_DIR$/views/login.ejs" />
       </list>
     </option>
   </component>
@@ -189,8 +202,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="712" />
-    <option name="y" value="263" />
+    <option name="x" value="252" />
+    <option name="y" value="256" />
     <option name="width" value="2165" />
     <option name="height" value="1400" />
   </component>
@@ -260,7 +273,7 @@
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="G:/express_test" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
     <property name="node.js.selected.package.prettier" value="" />
@@ -358,12 +371,12 @@
       <workItem from="1529548939060" duration="29000" />
       <workItem from="1529986501285" duration="6995000" />
       <workItem from="1529993540236" duration="27569000" />
-      <workItem from="1530032105554" duration="19554000" />
+      <workItem from="1530032105554" duration="22267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221428000" />
+    <option name="totallyTimeSpent" value="224141000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -375,15 +388,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2062" height="1126" extended-state="7" />
+    <frame x="202" y="205" width="1732" height="1120" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.125" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14901048" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50146484" side_tool="true" visible="true" weight="0.3110893" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50174624" side_tool="true" visible="true" weight="0.3129319" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49853516" visible="true" weight="0.3110893" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4982538" visible="true" weight="0.3129319" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
@@ -688,13 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="125" column="53" selection-start-line="125" selection-start-column="45" selection-end-line="125" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/newspush2.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -790,8 +796,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/services.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="310" column="32" selection-start-line="310" selection-start-column="32" selection-end-line="310" selection-end-column="32" />
+        <state relative-caret-position="400">
+          <caret line="379" column="5" lean-forward="true" selection-start-line="379" selection-start-column="5" selection-end-line="379" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#table#0;n#li#0;n#!!top" expanded="true" />
